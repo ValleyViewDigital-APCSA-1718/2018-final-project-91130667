@@ -1,0 +1,9 @@
+Name = Hyperspace Wars
+Controls - move mouse - Control movement of rocket
+           spacebar - fire laser
+
+Hyperspace Wars is a game which has a maximum duration of one minute. Within a minute, the player
+rocket must avoid incoming, randomly generated destroyer robots by either shooting at them with a laser
+or doddging them. Meanwhile, the amount of destroyers your rocket has shot down is added up in a counter. 
+The main objective of this game is to score the highest number of points in one minute without get-
+ting hit yourself. The game ends after either a minute has passed or if you are hit by a destroyer.
