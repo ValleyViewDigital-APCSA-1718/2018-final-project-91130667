@@ -1,0 +1,41 @@
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+public class Laser extends HyperspaceActors
+{
+    private boolean toRemove = false;
+    private int sX = 3;
+    
+    public void addedToWorld(World Hyperspace)
+    {
+           GreenfootImage laser = new GreenfootImage(50, 10);
+           laser.setColor(Color.MAGENTA);
+           laser.drawLine(0, 5, laser.getWidth() - 10, 5);
+           setImage(laser);
+    }
+    
+    public void act()
+    {
+        if(!toRemove)
+        {
+            setLocation(getX() + sX, getY());
+            Actor rocket = getOneIntersectingObject(Destroyer.class);
+            if(rocket != null)
+            {
+                Hyperspace space = (Hyperspace) getWorld();
+           
+                Counter.addScore();
+                getWorld().removeObject(this);
+            }
+            
+            if(getX() > getWorld().getWidth() + 200)
+               {
+                   toRemove = true;
+               }
+        }
+        
+        else
+        {
+            getWorld().removeObject(this);
+        }
+    }
+}
