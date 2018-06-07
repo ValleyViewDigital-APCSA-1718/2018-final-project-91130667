@@ -1,0 +1,57 @@
+import greenfoot.*;
+
+public class Destroyer extends HyperspaceActors
+{
+    private int nx = 0;
+    public boolean toRemove = false;
+   
+  
+   public Destroyer(int n)
+   {
+       nx = n;
+   }
+   
+   public void addedToWorld(World Hyperspace) //makes the object move leftwards
+   {
+         setRotation(180);
+   } 
+
+   public void move()
+   {
+       setLocation(getX() + nx, getY());
+       Actor actor = getOneIntersectingObject(Rocket.class);
+       if(actor != null)
+       {
+           ((Rocket)actor).toDestroy();
+           toDestroy();
+       }
+       
+       if(getX() < -200)
+       {
+           toRemove = true;
+       }
+   }
+   
+   public void toDestroy() //allows for destruction of object
+   {
+       for(int i = 0; i < 10; i++)
+       {
+           int fx = -20 + Greenfoot.getRandomNumber(40);
+           int fy = -20 + Greenfoot.getRandomNumber(40);
+       }
+       toRemove = true;
+   }
+   
+      public void act() 
+   {
+       if(!toRemove)
+       {
+           move();
+       }
+       else
+       {
+           getWorld().removeObject(this);
+       }
+   }
+}
+
