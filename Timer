@@ -1,0 +1,39 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+public class Timer extends Actor
+{
+    public int time = 0;
+    static int minutes;
+     
+    public Timer()
+    {
+        updateImage();
+    }
+     
+    public void act()
+    {
+        if (++time % 55 == 0) 
+        {
+            updateImage();
+        }
+    }
+     
+    public void updateImage()
+    {
+        GreenfootImage img = new GreenfootImage(125, 100);
+        img.setColor(Color.WHITE);
+        minutes = time/55/60;
+        String pre = minutes < 10 ? "0" : "";
+        String min = pre + minutes;
+        int seconds = (time - minutes * 55 * 60) / 55;
+        pre = seconds < 10 ? "0" : "";
+        String sec = pre + seconds;
+        img.setFont(new Font("Courier", 20));
+        img.drawString("Time: " + min + ":" + sec, 20, 23);
+        
+    }
+    
+    public static int getMinutes()
+    {
+        return minutes;
+    }
+}
