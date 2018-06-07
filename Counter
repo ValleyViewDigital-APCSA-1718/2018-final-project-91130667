@@ -1,0 +1,29 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+public class Counter extends Actor
+{
+    public static int score = 0;
+    
+    public void act() 
+    {
+        setImage(new GreenfootImage("Score :" + score, 24, Color.WHITE, Color.BLACK));
+    }    
+    
+    public static int addScore()
+    {
+        score++;
+        return score;
+    }
+    
+   /**public void destroyEnemies()
+    //{
+      //  Actor enemy = getOneIntersectingObject(Destroyer.class);
+        //if(enemy != null)
+        //{
+          //  World myWorld = getWorld();
+            //getWorld().removeObject(enemy);
+          //  Hyperspace hyperspace =(Hyperspace)myWorld;
+          //  Counter counter = Hyperspace.getCounter();
+          //  counter.addScore();
+        }
+    } **/
+}
