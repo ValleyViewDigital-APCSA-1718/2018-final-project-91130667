@@ -1,0 +1,60 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+public class Hyperspace extends World
+{
+    
+  private int pause = 0;
+  private int timer = 3600;
+  public Hyperspace space;
+    
+    public Hyperspace() //instantiates objects
+    {    
+        super(600, 400, 1, false); 
+        
+        addObject(new Rocket(), 100, 200);
+        addObject(new Timer(), 50, 50);
+        addObject(new Counter(), 550, 15);
+        
+    }
+
+    
+    public void act()
+    { 
+       if(pause>0)
+        {
+           pause--;
+        }
+       else
+        {
+           pause = 20;
+        }
+        
+        if(pause==1)
+        {
+            int py = Greenfoot.getRandomNumber(getHeight());
+            addObject(new Destroyer(-(2 + Greenfoot.getRandomNumber(3))), getWidth()+200, py);
+        }
+        
+        
+       if (timer > 0)
+        {
+            timer--;
+            if (timer == 0)
+            {
+                Greenfoot.stop();
+            }
+        
+        
+        }
+}
+
+public void endGame()
+    {
+        if (Timer.getMinutes() == 1 || Rocket.isTouching(Destroyer.class))
+        {
+               if (space != null)
+               {
+                   space.removeObjects(space.getObjects(null));
+               }
+        }
+    }
+}
